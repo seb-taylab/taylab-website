@@ -20,8 +20,8 @@ const CallToAction = () => {
               <p className="text-gray-600 mb-4">
                 Discover your leadership superpower and build character virtues that set you apart.
               </p>
-              <Link to="/quiz" className="inline-flex items-center text-[#0A1A2F] font-semibold group">
-                Take the Virtue Quiz
+              <Link to="/virtue-assessment" className="inline-flex items-center text-[#0A1A2F] font-semibold group">
+                Take the Virtue Assessment
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

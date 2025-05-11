@@ -139,7 +139,7 @@ const VirtueGrid = () => {
         </div>
 
         <div className="text-center">
-          <Link to="/quiz" className="inline-flex items-center px-6 py-3 bg-[#0A1A2F] text-white rounded-md hover:bg-opacity-90 transition-all group">
+          <Link to="/virtue-assessment" className="inline-flex items-center px-6 py-3 bg-[#0A1A2F] text-white rounded-md hover:bg-opacity-90 transition-all group">
             Assess Your Virtue Level
             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
           </Link>

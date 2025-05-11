@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Framework from "./pages/Framework";
 import Quiz from "./pages/Quiz";
+import VirtueAssessment from "./pages/VirtueAssessment";
+import ErrorPage from "./pages/ErrorPage";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -23,7 +25,8 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/framework" element={<Framework />} />
             <Route path="/quiz" element={<Quiz />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/virtue-assessment" element={<VirtueAssessment />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
