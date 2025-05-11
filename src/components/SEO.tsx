@@ -12,31 +12,31 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = 'WRLDS',
-  description = 'WRLDS Technologies: Pioneering smart engineering solutions with textile sensors for sports, safety, and performance monitoring.',
+  title = 'Taylab',
+  description = 'Taylab equips the next generation with the virtues to lead—not just succeed. The definitive system for character-driven leadership development.',
   type = 'website',
-  name = 'WRLDS Technologies',
-  imageUrl = 'https://lovable.dev/opengraph-image-p98pqg.png'
+  name = 'Taylab Leadership',
+  imageUrl = 'https://example.com/taylab-og-image.jpg' // Replace with actual image URL when available
 }) => {
   const location = useLocation();
-  const currentUrl = `https://wrlds.com${location.pathname}`;
+  const currentUrl = `https://taylab.com${location.pathname}`;
 
   // Create JSON-LD structured data
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'WRLDS Technologies',
-    url: 'https://wrlds.com',
-    logo: 'https://wrlds.com/lovable-uploads/14ea3fe0-19d6-425c-b95b-4117bc41f3ca.png',
-    description: 'Pioneering smart engineering solutions with textile sensors',
+    name: 'Taylab Leadership',
+    url: 'https://taylab.com',
+    logo: 'https://taylab.com/logo.png', // Replace with actual logo URL
+    description: 'The definitive system for character-driven leadership development',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: 'info@wrlds.com'
+      email: 'info@taylab.com'
     },
     sameAs: [
-      'https://www.linkedin.com/company/wrlds-technologies',
-      'https://twitter.com/wrldstechnologies'
+      'https://www.linkedin.com/company/taylab',
+      'https://twitter.com/taylab'
     ]
   };
 

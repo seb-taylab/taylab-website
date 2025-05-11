@@ -1,15 +1,11 @@
 
-import { ArrowRight, Code, Cpu, Layers, MessageSquare } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
-  const isMobile = useIsMobile();
   const containerVariants = {
-    hidden: {
-      opacity: 0
-    },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
@@ -19,6 +15,7 @@ const Hero = () => {
       }
     }
   };
+
   const itemVariants = {
     hidden: {
       y: 20,
@@ -32,93 +29,82 @@ const Hero = () => {
       }
     }
   };
-  
-  const scrollToContact = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  };
-  
-  return <motion.div className="relative mt-16 md:mt-0 w-full max-w-[100vw]" initial="hidden" animate="visible" variants={containerVariants}>
-      <div className="banner-container bg-black relative overflow-hidden h-[700px] md:h-[750px] w-full">
-        <div className="absolute inset-0 bg-black w-full">
-          <img src="/lovable-uploads/4bfa0d71-3ed2-4693-90b6-35142468907f.png" alt="WRLDS Technologies Connected People" className={`w-full h-full object-cover opacity-70 grayscale ${isMobile ? 'object-right' : 'object-center'}`} />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-white"></div>
+
+  return (
+    <motion.div
+      className="relative w-full max-w-[100vw] min-h-[85vh] flex flex-col items-center"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <div className="relative w-full min-h-[85vh] overflow-hidden">
+        {/* Split-screen background */}
+        <div className="absolute inset-0 w-full h-full flex">
+          {/* Left side: Chaotic, blurry world */}
+          <div className="w-1/2 h-full bg-gray-900 relative overflow-hidden">
+            <div className="absolute inset-0 bg-opacity-40 bg-black">
+              <img 
+                src="/lovable-uploads/cf8966e3-de0d-445f-9fbd-ee6c48daa7ff.png" 
+                alt="Chaotic world" 
+                className="w-full h-full object-cover opacity-60 blur-sm"
+              />
+            </div>
+          </div>
+          
+          {/* Right side: Focused young leader */}
+          <div className="w-1/2 h-full bg-[#0A1A2F] relative overflow-hidden">
+            <div className="absolute inset-0">
+              <img 
+                src="/lovable-uploads/48e540e5-6a25-44e4-b3f7-80f3bfc2777a.png" 
+                alt="Focused leader" 
+                className="w-full h-full object-cover opacity-90" 
+              />
+              
+              {/* Virtue grid overlay */}
+              <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 opacity-20">
+                {Array.from({ length: 9 }).map((_, i) => (
+                  <div key={i} className="border border-[#D4AF37]"></div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <div className="banner-overlay bg-transparent pt-21 md:pt-24 w-full">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center h-full">
-            <motion.div className="w-full max-w-4xl text-center" variants={itemVariants}>
-              <motion.h1 className="banner-title text-white text-3xl md:text-5xl lg:text-6xl font-bold" variants={itemVariants}>The Future of Smart Textile Technology is here.</motion.h1>
-              <motion.p className="banner-subtitle text-gray-300 mt-4 md:mt-6 text-sm md:text-base max-w-2xl mx-auto" variants={itemVariants}>
-                We integrate AI-powered textile sensors into clothing, footwear, and wearables.
-              </motion.p>
-              <motion.div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-6 md:mt-8 justify-center" variants={itemVariants}>
-                {/* Styled as a button but using an anchor tag for project navigation */}
-                <button 
-                  className="px-6 md:px-8 py-2 md:py-3 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-all shadow-lg hover:shadow-xl hover:shadow-gray-300/20 flex items-center justify-center group text-sm md:text-base"
-                  onClick={e => {
-                    e.preventDefault();
-                    const projectsSection = document.getElementById('projects');
-                    if (projectsSection) {
-                      projectsSection.scrollIntoView({
-                        behavior: 'smooth'
-                      });
-                    }
-                  }}
-                >
-                  Explore Projects
-                  <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                
-                {/* Using the Button component from shadcn but with custom styling to match the explore button */}
-                <button 
-                  className="px-6 md:px-8 py-2 md:py-3 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl hover:shadow-gray-300/20 flex items-center justify-center group text-sm md:text-base"
-                  onClick={scrollToContact}
-                >
-                  Contact Us
-                  <MessageSquare className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
-                </button>
-              </motion.div>
+
+        {/* Content overlay */}
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-white z-10 px-6">
+          <div className="max-w-5xl text-center">
+            <motion.h1 
+              variants={itemVariants}
+              className="text-4xl md:text-6xl lg:text-7xl font-playfair font-bold mb-6 leading-tight"
+            >
+              The Future Belongs to the Disciplined
+            </motion.h1>
+            
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-10"
+            >
+              Taylab equips the next generation with the virtues to lead—not just succeed.
+            </motion.p>
+            
+            <motion.div variants={itemVariants}>
+              <Link to="/framework" className="px-8 py-4 bg-[#D4AF37] text-[#0A1A2F] font-bold rounded-md hover:bg-opacity-90 transition-all flex items-center justify-center group max-w-md mx-auto">
+                Explore the Virtue-Talent System
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </motion.div>
           </div>
         </div>
       </div>
-      
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 mx-auto">
-        <motion.div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4" variants={containerVariants} initial="hidden" animate="visible" transition={{
-        delay: 0.6
-      }}>
-          <motion.div className="bg-white p-4 md:p-5 rounded-xl shadow-sm border border-gray-100 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md" variants={itemVariants}>
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-100 flex items-center justify-center rounded-lg text-gray-500 mb-2 md:mb-3">
-              <Cpu className="w-5 h-5 md:w-6 md:h-6" />
-            </div>
-            <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2 text-gray-800">Smart Textiles</h3>
-            <p className="text-gray-600 text-xs md:text-sm">Intelligent fabric sensors that seamlessly integrate into clothing and footwear.</p>
-          </motion.div>
-          
-          <motion.div className="bg-white p-4 md:p-5 rounded-xl shadow-sm border border-gray-100 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md" variants={itemVariants}>
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-100 flex items-center justify-center rounded-lg text-gray-500 mb-2 md:mb-3">
-              <Code className="w-5 h-5 md:w-6 md:h-6" />
-            </div>
-            <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2 text-gray-800">Adaptive AI</h3>
-            <p className="text-gray-600 text-xs md:text-sm">Industry-specific algorithms that transform textile sensor data into meaningful insights.</p>
-          </motion.div>
-          
-          <motion.div className="bg-white p-4 md:p-5 rounded-xl shadow-sm border border-gray-100 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md" variants={itemVariants}>
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-100 flex items-center justify-center rounded-lg text-gray-500 mb-2 md:mb-3">
-              <Layers className="w-5 h-5 md:w-6 md:h-6" />
-            </div>
-            <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2 text-gray-800">Cross-Industry</h3>
-            <p className="text-gray-600 text-xs md:text-sm">Solutions for sports, military, healthcare, industrial, and professional environments.</p>
-          </motion.div>
-        </motion.div>
+
+      {/* Modern monastic tagline */}
+      <div className="w-full bg-white py-16 text-center">
+        <p className="text-2xl md:text-3xl font-playfair text-[#0A1A2F] max-w-4xl mx-auto px-6">
+          "True leadership isn't taught. It's cultivated."
+        </p>
       </div>
-    </motion.div>;
+    </motion.div>
+  );
 };
 
 export default Hero;

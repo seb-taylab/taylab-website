@@ -1,22 +1,29 @@
 
+import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import Hero from '@/components/Hero';
-import Features from '@/components/Features';
-import Projects from '@/components/Projects';
-import WhyWrlds from '@/components/WhyWrlds';
+import VirtueGrid from '@/components/VirtueGrid';
+import HowItWorks from '@/components/HowItWorks';
+import Testimonials from '@/components/Testimonials';
+import CallToAction from '@/components/CallToAction';
 import SEO from '@/components/SEO';
 
 const Index = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <PageLayout>
       <SEO 
-        title="WRLDS - Smart Textile Technology" 
-        description="WRLDS Technologies: Pioneering smart engineering solutions with textile sensors for sports, safety, and performance monitoring."
+        title="Taylab - Character-Driven Leadership Development" 
+        description="Taylab equips the next generation with the virtues to lead—not just succeed. The definitive system for character-driven leadership development."
       />
       <Hero />
-      <Features />
-      <WhyWrlds />
-      <Projects />
+      <VirtueGrid />
+      <HowItWorks />
+      <Testimonials />
+      <CallToAction />
     </PageLayout>
   );
 };

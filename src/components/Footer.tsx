@@ -1,158 +1,73 @@
 
-import { ArrowRight, Lock, Linkedin } from "lucide-react";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
-import emailjs from 'emailjs-com';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const handlePrivacySettings = (e: React.MouseEvent) => {
-    e.preventDefault();
-    // @ts-ignore
-    if (window.UC_UI && typeof window.UC_UI.showSecondLayer === 'function') {
-      // @ts-ignore
-      window.UC_UI.showSecondLayer();
-    }
-  };
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!email) {
-      toast({
-        title: "Error",
-        description: "Please enter your email address.",
-        variant: "destructive"
-      });
-      return;
-    }
-    
-    setIsSubmitting(true);
-    
-    try {
-      // EmailJS configuration
-      const EMAILJS_SERVICE_ID = "service_i3h66xg";
-      const EMAILJS_TEMPLATE_ID = "template_fgq53nh";
-      const EMAILJS_PUBLIC_KEY = "wQmcZvoOqTAhGnRZ3";
-      
-      const templateParams = {
-        from_name: "Website Subscriber",
-        from_email: email,
-        message: `New subscription request from the website footer.`,
-        to_name: 'WRLDS Team',
-        reply_to: email
-      };
-      
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        templateParams,
-        EMAILJS_PUBLIC_KEY
-      );
-      
-      toast({
-        title: "Success!",
-        description: "Thank you for subscribing to our newsletter.",
-        variant: "default"
-      });
-      
-      setEmail("");
-    } catch (error) {
-      console.error("Error sending subscription:", error);
-      
-      toast({
-        title: "Error",
-        description: "There was a problem subscribing. Please try again later.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const currentYear = new Date().getFullYear();
+  
+  // Get a random quote from Marcus Aurelius
+  const quotes = [
+    "You have power over your mind - not outside events. Realize this, and you will find strength.",
+    "The happiness of your life depends upon the quality of your thoughts.",
+    "Waste no more time arguing about what a good man should be. Be one.",
+    "The best revenge is to be unlike him who performed the injury.",
+    "If it is not right, do not do it; if it is not true, do not say it.",
+  ];
+  
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
   return (
-    <footer id="contact" className="bg-black text-white pt-16 pb-8 w-full">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 pb-10 border-b border-gray-700">
-          <div className="lg:col-span-2">
+    <footer className="bg-[#0A1A2F] text-white pt-16 pb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div className="col-span-1 md:col-span-1">
             <img 
-              src="/lovable-uploads/7d120ee6-3614-4b75-9c35-716d54490d67.png" 
-              alt="WRLDS Technologies Logo" 
-              className="h-10 w-auto mb-6 invert" // Added invert to make logo white
+              src="/lovable-uploads/7d120ee6-3614-4b75-9c35-716d54490d67.png"
+              alt="Taylab Logo" 
+              className="h-8 w-auto mb-4 brightness-0 invert" 
             />
-            <p className="text-gray-300 mb-6">
-              WRLDS Technologies provides an end-to-end platform for the creation and deployment of AI-powered smart sensor devices, giving customers 100% ownership while handling the complete technological development.
+            <p className="text-gray-400 mb-4">
+              The definitive system for character-driven leadership development.
             </p>
-            <p className="text-gray-300 mb-6">
-              Hornsgatan 110<br />
-              117 26, Stockholm Sweden
-            </p>
-            <div className="flex space-x-4">
-              <a 
-                href="https://www.linkedin.com/company/wrldstechnologies/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 transition-colors hover:bg-gray-700 hover:text-white"
-              >
-                <Linkedin size={20} />
-              </a>
-            </div>
           </div>
-          
+
           <div>
-            <h3 className="text-lg font-bold mb-4 text-white">Company</h3>
-            <ul className="space-y-3">
-              <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link to="/careers" className="text-gray-300 hover:text-white transition-colors">Careers</Link></li>
-              <li><Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><a href="#" onClick={handlePrivacySettings} className="text-gray-300 hover:text-white transition-colors">Manage Consent</a></li>
+            <h3 className="font-bold text-lg mb-4">Framework</h3>
+            <ul className="space-y-2">
+              <li><Link to="/framework" className="text-gray-300 hover:text-white">The 9 Virtues</Link></li>
+              <li><Link to="/superpower-gate" className="text-gray-300 hover:text-white">Super-Power Gate</Link></li>
+              <li><Link to="/case-studies" className="text-gray-300 hover:text-white">Case Studies</Link></li>
             </ul>
           </div>
-          
+
           <div>
-            <h3 className="text-lg font-bold mb-4 text-white">Get in Touch</h3>
-            <form className="space-y-4" onSubmit={handleSubscribe}>
-              <div>
-                <input 
-                  type="email" 
-                  placeholder="Your email" 
-                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 text-white placeholder-gray-400"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={isSubmitting}
-                />
-              </div>
-              <button 
-                type="submit" 
-                className="w-full px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Subscribing..." : (
-                  <>
-                    Subscribe
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </>
-                )}
-              </button>
-            </form>
+            <h3 className="font-bold text-lg mb-4">Programs</h3>
+            <ul className="space-y-2">
+              <li><Link to="/families/children" className="text-gray-300 hover:text-white">For Ages 6-12</Link></li>
+              <li><Link to="/families/teens" className="text-gray-300 hover:text-white">For Ages 13-18</Link></li>
+              <li><Link to="/institutions/schools" className="text-gray-300 hover:text-white">For Schools</Link></li>
+              <li><Link to="/institutions/organizations" className="text-gray-300 hover:text-white">For Organizations</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-lg mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><Link to="/manifesto" className="text-gray-300 hover:text-white">Manifesto</Link></li>
+              <li><Link to="/method/process" className="text-gray-300 hover:text-white">Our Method</Link></li>
+              <li><Link to="/contact" className="text-gray-300 hover:text-white">Contact Us</Link></li>
+              <li><Link to="/privacy-policy" className="text-gray-300 hover:text-white">Privacy Policy</Link></li>
+            </ul>
           </div>
         </div>
-        
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} WRLDS Technologies. All rights reserved.
+
+        <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-500 text-sm mb-4 md:mb-0">
+            © {currentYear} Taylab. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-white transition-colors">Privacy Policy</Link>
-            <a href="#" onClick={handlePrivacySettings} className="text-sm text-gray-400 hover:text-white transition-colors flex items-center">
-              <Lock className="mr-1 h-4 w-4" />
-              Manage Consent
-            </a>
-          </div>
+          
+          <p className="text-gray-500 text-sm italic">
+            "{randomQuote}" - Marcus Aurelius
+          </p>
         </div>
       </div>
     </footer>

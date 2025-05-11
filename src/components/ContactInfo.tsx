@@ -1,81 +1,63 @@
 
-import React from 'react';
-import { Mail, Linkedin, Phone } from 'lucide-react';
+import { Mail, Calendar } from 'lucide-react';
 
 const ContactInfo = () => {
   return (
-    <section className="bg-gradient-to-b from-white to-black text-white relative py-[25px]">
+    <section id="contact" className="bg-gray-50 py-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-block mb-3 px-3 py-1 bg-white text-black rounded-full text-sm font-medium">
+          <div className="inline-block mb-3 px-3 py-1 bg-[#0A1A2F] text-white rounded-full text-sm font-medium">
             Get In Touch
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
-            Contact Us Today
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4 text-[#0A1A2F]">
+            Begin Your Leadership Journey
           </h2>
           <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-            Have questions about our AI-powered sensor solutions? Reach out to our team and let's discuss how we can help bring your ideas to life.
+            Ready to cultivate character-driven leadership in yourself or your institution? Schedule a consultation with our team.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Felix's Contact Info */}
-          <div className="bg-white rounded-xl shadow-xl p-8 border border-gray-700">
+          {/* For Individuals/Families */}
+          <div className="bg-white rounded-xl shadow-sm p-8 border border-gray-200">
             <div className="flex flex-col items-center text-center">
-              <img 
-                src="/lovable-uploads/aa5291bd-2417-4c1e-9a02-0bcc71a92507.png"
-                alt="Felix von Heland"
-                className="w-32 h-32 rounded-full mb-4 object-cover filter grayscale"
-              />
-              <h3 className="text-xl font-bold text-gray-900">Felix von Heland</h3>
-              <p className="text-gray-600 mb-4">CEO and Founder</p>
-              <div className="flex flex-col space-y-3">
-                <a href="mailto:felix@wrlds.com" className="flex items-center text-gray-700 hover:text-blue-600">
-                  <Mail className="w-5 h-5 mr-2" />
-                  felix@wrlds.com
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/felixvonheland/" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center text-gray-700 hover:text-blue-600"
-                >
-                  <Linkedin className="w-5 h-5 mr-2" />
-                  LinkedIn Profile
-                </a>
+              <div className="w-16 h-16 bg-[#0A1A2F] rounded-full flex items-center justify-center mb-4">
+                <Calendar className="w-8 h-8 text-white" />
               </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">For Individuals & Families</h3>
+              <p className="text-gray-600 mb-6">
+                Discover how our virtue-talent framework can help you or your child develop lasting leadership character.
+              </p>
+              <a
+                href="#"
+                className="px-6 py-3 bg-[#D4AF37] text-[#0A1A2F] font-semibold rounded-md hover:bg-opacity-90 transition-all inline-flex items-center"
+                onClick={(e) => {
+                  e.preventDefault();
+                  // Would connect to Calendly in a real implementation
+                  alert("This would connect to a scheduling calendar in the live site.");
+                }}
+              >
+                Book a Family Strategy Call
+              </a>
             </div>
           </div>
 
-          {/* Love's Contact Info */}
-          <div className="bg-white rounded-xl shadow-xl p-8 border border-gray-700">
+          {/* For Institutions */}
+          <div className="bg-white rounded-xl shadow-sm p-8 border border-gray-200">
             <div className="flex flex-col items-center text-center">
-              <img 
-                src="/lovable-uploads/a9bb9110-964a-43b0-a5ab-7162140cd133.png"
-                alt="Love Anderberg"
-                className="w-32 h-32 rounded-full mb-4 object-cover filter grayscale"
-              />
-              <h3 className="text-xl font-bold text-gray-900">Love Anderberg</h3>
-              <p className="text-gray-600 mb-4">COO</p>
-              <div className="flex flex-col space-y-3">
-                <a href="mailto:love@wrlds.com" className="flex items-center text-gray-700 hover:text-blue-600">
-                  <Mail className="w-5 h-5 mr-2" />
-                  love@wrlds.com
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/love-anderberg-67549a174/" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center text-gray-700 hover:text-blue-600"
-                >
-                  <Linkedin className="w-5 h-5 mr-2" />
-                  LinkedIn Profile
-                </a>
-                <a href="tel:+46760149508" className="flex items-center text-gray-700 hover:text-blue-600">
-                  <Phone className="w-5 h-5 mr-2" />
-                  076-014 95 08
-                </a>
+              <div className="w-16 h-16 bg-[#0A1A2F] rounded-full flex items-center justify-center mb-4">
+                <Mail className="w-8 h-8 text-white" />
               </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">For Schools & Organizations</h3>
+              <p className="text-gray-600 mb-6">
+                Partner with us to build character-driven leadership programs that transform your institution.
+              </p>
+              <a
+                href="mailto:partnerships@taylab.com"
+                className="px-6 py-3 border-2 border-[#0A1A2F] text-[#0A1A2F] font-semibold rounded-md hover:bg-gray-50 transition-all inline-flex items-center"
+              >
+                Request Partnership Kit
+              </a>
             </div>
           </div>
         </div>
